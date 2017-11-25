@@ -5,10 +5,8 @@
  */
 package practica2_ahorcado;
 
-/**
- *
- * @author usuario
- */
+import java.awt.Color;
+
 public class AhorcadoUI extends javax.swing.JFrame {
 
     /**
@@ -16,6 +14,7 @@ public class AhorcadoUI extends javax.swing.JFrame {
      */
     public AhorcadoUI() {
         initComponents();
+        this.jPanel_menu.setBackground(new Color(144,164,174,64));
     }
 
     /**
@@ -27,21 +26,97 @@ public class AhorcadoUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel_fondo = new javax.swing.JPanel();
+        jPanel_menu = new javax.swing.JPanel();
+        jPanel_jugadores = new javax.swing.JPanel();
+        jLabel_Exit = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1061, 657));
+        setMinimumSize(new java.awt.Dimension(1061, 657));
+        setName("AhorcadoUI"); // NOI18N
+        setUndecorated(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(1061, 657));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel_fondo.setBackground(new java.awt.Color(38, 50, 56));
+        jPanel_fondo.setMaximumSize(new java.awt.Dimension(1061, 657));
+        jPanel_fondo.setMinimumSize(new java.awt.Dimension(1061, 657));
+        jPanel_fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel_menu.setBackground(new java.awt.Color(144, 164, 174));
+        jPanel_menu.setMaximumSize(new java.awt.Dimension(200, 657));
+        jPanel_menu.setMinimumSize(new java.awt.Dimension(200, 657));
+        jPanel_menu.setName("Menu"); // NOI18N
+        jPanel_menu.setPreferredSize(new java.awt.Dimension(200, 657));
+
+        javax.swing.GroupLayout jPanel_menuLayout = new javax.swing.GroupLayout(jPanel_menu);
+        jPanel_menu.setLayout(jPanel_menuLayout);
+        jPanel_menuLayout.setHorizontalGroup(
+            jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel_menuLayout.setVerticalGroup(
+            jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
+
+        jPanel_fondo.add(jPanel_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
+
+        jPanel_jugadores.setBackground(new java.awt.Color(96, 125, 139));
+        jPanel_jugadores.setMaximumSize(new java.awt.Dimension(240, 660));
+        jPanel_jugadores.setMinimumSize(new java.awt.Dimension(240, 660));
+        jPanel_jugadores.setName("Jugadores"); // NOI18N
+
+        javax.swing.GroupLayout jPanel_jugadoresLayout = new javax.swing.GroupLayout(jPanel_jugadores);
+        jPanel_jugadores.setLayout(jPanel_jugadoresLayout);
+        jPanel_jugadoresLayout.setHorizontalGroup(
+            jPanel_jugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        jPanel_jugadoresLayout.setVerticalGroup(
+            jPanel_jugadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
+        );
+
+        jPanel_fondo.add(jPanel_jugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 240, 660));
+
+        jLabel_Exit.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_Exit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_Exit.setForeground(new java.awt.Color(102, 204, 255));
+        jLabel_Exit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-Cerrar Gris ventana-48.png"))); // NOI18N
+        jLabel_Exit.setPreferredSize(new java.awt.Dimension(45, 45));
+        jLabel_Exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_ExitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_ExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_ExitMouseExited(evt);
+            }
+        });
+        jPanel_fondo.add(jLabel_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1018, -2, -1, -1));
+
+        getContentPane().add(jPanel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1061, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel_ExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_ExitMouseEntered
+        this.jLabel_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-Cerrar ventana-48.png")));
+    }//GEN-LAST:event_jLabel_ExitMouseEntered
+
+    private void jLabel_ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_ExitMouseExited
+        jLabel_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-Cerrar Gris ventana-48.png")));
+    }//GEN-LAST:event_jLabel_ExitMouseExited
+
+    private void jLabel_ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_ExitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel_ExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +154,9 @@ public class AhorcadoUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel_Exit;
+    private javax.swing.JPanel jPanel_fondo;
+    private javax.swing.JPanel jPanel_jugadores;
+    private javax.swing.JPanel jPanel_menu;
     // End of variables declaration//GEN-END:variables
 }

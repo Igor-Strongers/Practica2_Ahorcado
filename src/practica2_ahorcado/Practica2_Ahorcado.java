@@ -15,7 +15,10 @@ public class Practica2_Ahorcado {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        AhorcadoUI ahorcadoUI = new AhorcadoUI();
+        
+        ahorcadoUI.setLocationRelativeTo(null);
+        ahorcadoUI.setVisible(true);
     }
     
 }

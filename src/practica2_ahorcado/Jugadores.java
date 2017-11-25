@@ -10,5 +10,27 @@ package practica2_ahorcado;
  * @author usuario
  */
 public class Jugadores {
+    private String nombreJugador;
+    private String palabraAdivinar;
+
+    public Jugadores() {
+    }
+
+    public String getNombreJugador() {
+        return nombreJugador;
+    }
+
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
+    }
+
+    public String getPalabraAdivinar() {
+        return palabraAdivinar;
+    }
+
+    public void setPalabraAdivinar(String palabraAdivinar) {
+        this.palabraAdivinar = palabraAdivinar;
+    }
+    
     
 }
