@@ -8,10 +8,11 @@ package practica2_ahorcado;
 import java.awt.Color;
 
 public class AhorcadoUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AhorcadoUI
-     */
+    private int ronda = 1;
+    private Juego juego = new Juego();
+    private Jugadores jug1 = new Jugadores(); 
+    private Jugadores jug2 = new Jugadores();
+    
     public AhorcadoUI() {
         initComponents();
         //this.jPanel_menu.setBackground(new Color(144,164,174,64));
@@ -30,12 +31,36 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jLabel_Exit = new javax.swing.JLabel();
         jLabel_Minimizar = new javax.swing.JLabel();
         jPanel_Jugador1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel_soga = new javax.swing.JLabel();
+        jLabel_cabeza = new javax.swing.JLabel();
+        jLabel_brazoDer = new javax.swing.JLabel();
+        jLabel_brazoIzq = new javax.swing.JLabel();
+        jLabel_piernaDer = new javax.swing.JLabel();
+        jLabel_piernaIzq = new javax.swing.JLabel();
         jPanel_Jugador2 = new javax.swing.JPanel();
         jPanel_menu = new javax.swing.JPanel();
+        jButton_Iniciar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel_jugadores = new javax.swing.JPanel();
         jPanel_Info_jug1 = new javax.swing.JPanel();
         jLabel_avatar1 = new javax.swing.JLabel();
+        jLabel_nombreJug1 = new javax.swing.JLabel();
+        jLabel_ganado = new javax.swing.JLabel();
+        jLabel_perdido = new javax.swing.JLabel();
+        jTextField_letra = new javax.swing.JTextField();
+        jLabel_ronda = new javax.swing.JLabel();
+        jButton_comprobar1 = new javax.swing.JButton();
+        jButton_resolver = new javax.swing.JButton();
+        jPanel_Info_jug2 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel_avatar2 = new javax.swing.JLabel();
+        jLabel_nombreJug2 = new javax.swing.JLabel();
+        jLabel_ganado1 = new javax.swing.JLabel();
+        jLabel_perdido1 = new javax.swing.JLabel();
+        jTextField_letra1 = new javax.swing.JTextField();
+        jLabel_ronda1 = new javax.swing.JLabel();
+        jButton_comprobar2 = new javax.swing.JButton();
+        jButton_resolver1 = new javax.swing.JButton();
         jLabel_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,9 +121,29 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jPanel_Jugador1.setRequestFocusEnabled(false);
         jPanel_Jugador1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Sin nombre.png"))); // NOI18N
-        jPanel_Jugador1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 80, 270));
+        jLabel_soga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_soga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Soga-1.png"))); // NOI18N
+        jPanel_Jugador1.add(jLabel_soga, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
+
+        jLabel_cabeza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_cabeza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cabeza-1.png"))); // NOI18N
+        jPanel_Jugador1.add(jLabel_cabeza, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 146, -1, -1));
+
+        jLabel_brazoDer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_brazoDer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Brazo derecho-1.png"))); // NOI18N
+        jPanel_Jugador1.add(jLabel_brazoDer, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
+
+        jLabel_brazoIzq.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_brazoIzq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Brazo izquierdo-1.png"))); // NOI18N
+        jPanel_Jugador1.add(jLabel_brazoIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 200, -1, -1));
+
+        jLabel_piernaDer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_piernaDer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pierna derecha-1.png"))); // NOI18N
+        jPanel_Jugador1.add(jLabel_piernaDer, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
+
+        jLabel_piernaIzq.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_piernaIzq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pierna izquierda-1.png"))); // NOI18N
+        jPanel_Jugador1.add(jLabel_piernaIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 260, -1, -1));
 
         jPanel_fondo.add(jPanel_Jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 630, 328));
 
@@ -127,15 +172,47 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jPanel_menu.setName("Menu"); // NOI18N
         jPanel_menu.setPreferredSize(new java.awt.Dimension(200, 657));
 
+        jButton_Iniciar.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_Iniciar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton_Iniciar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_Iniciar.setText("<html>Nueva<br>Partida</html>");
+        jButton_Iniciar.setBorder(null);
+        jButton_Iniciar.setBorderPainted(false);
+        jButton_Iniciar.setFocusPainted(false);
+        jButton_Iniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_IniciarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_IniciarMouseExited(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Juego del Ahorcado");
+
         javax.swing.GroupLayout jPanel_menuLayout = new javax.swing.GroupLayout(jPanel_menu);
         jPanel_menu.setLayout(jPanel_menuLayout);
         jPanel_menuLayout.setHorizontalGroup(
             jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(jPanel_menuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton_Iniciar)
+                .addContainerGap())
+            .addGroup(jPanel_menuLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel_menuLayout.setVerticalGroup(
             jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGroup(jPanel_menuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(77, 77, 77)
+                .addComponent(jButton_Iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(481, Short.MAX_VALUE))
         );
 
         jPanel_fondo.add(jPanel_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
@@ -152,9 +229,142 @@ public class AhorcadoUI extends javax.swing.JFrame {
 
         jLabel_avatar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_avatar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Avatar 1v2.png"))); // NOI18N
-        jPanel_Info_jug1.add(jLabel_avatar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 110, 110));
+        jPanel_Info_jug1.add(jLabel_avatar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 110, 110));
+
+        jLabel_nombreJug1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel_nombreJug1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_nombreJug1.setText("Jugador 1");
+        jPanel_Info_jug1.add(jLabel_nombreJug1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 160, -1));
+
+        jLabel_ganado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_ganado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_ganado.setText("Ganado: 0");
+        jPanel_Info_jug1.add(jLabel_ganado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel_perdido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_perdido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_perdido.setText("Perdido: 0");
+        jPanel_Info_jug1.add(jLabel_perdido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+
+        jTextField_letra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField_letra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_letra.setBorder(null);
+        jPanel_Info_jug1.add(jTextField_letra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 30));
+
+        jLabel_ronda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_ronda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_ronda.setText("Ronda 1");
+        jPanel_Info_jug1.add(jLabel_ronda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        jButton_comprobar1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_comprobar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton_comprobar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_comprobar1.setText("Enviar");
+        jButton_comprobar1.setBorder(null);
+        jButton_comprobar1.setBorderPainted(false);
+        jButton_comprobar1.setFocusPainted(false);
+        jButton_comprobar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_comprobar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_comprobar1MouseExited(evt);
+            }
+        });
+        jPanel_Info_jug1.add(jButton_comprobar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 60, 30));
+
+        jButton_resolver.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_resolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton_resolver.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_resolver.setText("Resolver");
+        jButton_resolver.setToolTipText("");
+        jButton_resolver.setBorder(null);
+        jButton_resolver.setBorderPainted(false);
+        jButton_resolver.setFocusPainted(false);
+        jButton_resolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_resolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_resolverMouseExited(evt);
+            }
+        });
+        jPanel_Info_jug1.add(jButton_resolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 170, 30));
 
         jPanel_jugadores.add(jPanel_Info_jug1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel_Info_jug2.setBackground(new java.awt.Color(96, 125, 139));
+        jPanel_Info_jug2.setPreferredSize(new java.awt.Dimension(240, 328));
+        jPanel_Info_jug2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_Info_jug2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 240, 20));
+
+        jLabel_avatar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_avatar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Avatar 2v2.png"))); // NOI18N
+        jPanel_Info_jug2.add(jLabel_avatar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 110, 110));
+
+        jLabel_nombreJug2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel_nombreJug2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_nombreJug2.setText("Jugador 2");
+        jPanel_Info_jug2.add(jLabel_nombreJug2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 160, -1));
+
+        jLabel_ganado1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_ganado1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_ganado1.setText("Ganado: 0");
+        jPanel_Info_jug2.add(jLabel_ganado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel_perdido1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_perdido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_perdido1.setText("Perdido: 0");
+        jPanel_Info_jug2.add(jLabel_perdido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+
+        jTextField_letra1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField_letra1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_letra1.setBorder(null);
+        jPanel_Info_jug2.add(jTextField_letra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 30));
+
+        jLabel_ronda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_ronda1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_ronda1.setText("Ronda 1");
+        jPanel_Info_jug2.add(jLabel_ronda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        jButton_comprobar2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_comprobar2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton_comprobar2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_comprobar2.setText("Enviar");
+        jButton_comprobar2.setBorder(null);
+        jButton_comprobar2.setBorderPainted(false);
+        jButton_comprobar2.setFocusPainted(false);
+        jButton_comprobar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_comprobar2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_comprobar2MouseExited(evt);
+            }
+        });
+        jPanel_Info_jug2.add(jButton_comprobar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 60, 30));
+
+        jButton_resolver1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_resolver1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton_resolver1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_resolver1.setText("Resolver");
+        jButton_resolver1.setToolTipText("");
+        jButton_resolver1.setBorder(null);
+        jButton_resolver1.setBorderPainted(false);
+        jButton_resolver1.setFocusPainted(false);
+        jButton_resolver1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_resolver1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_resolver1MouseExited(evt);
+            }
+        });
+        jPanel_Info_jug2.add(jButton_resolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 170, 30));
+
+        jPanel_jugadores.add(jPanel_Info_jug2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
         jPanel_fondo.add(jPanel_jugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 240, 660));
 
@@ -193,6 +403,46 @@ public class AhorcadoUI extends javax.swing.JFrame {
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jLabel_MinimizarMouseClicked
 
+    private void jButton_IniciarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IniciarMouseEntered
+        this.jButton_Iniciar.setBackground(new Color(236,239,241));
+    }//GEN-LAST:event_jButton_IniciarMouseEntered
+
+    private void jButton_IniciarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_IniciarMouseExited
+        this.jButton_Iniciar.setBackground(new Color(102,102,102));
+    }//GEN-LAST:event_jButton_IniciarMouseExited
+
+    private void jButton_comprobar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_comprobar1MouseEntered
+        this.jButton_comprobar1.setBackground(new Color(236,239,241));
+    }//GEN-LAST:event_jButton_comprobar1MouseEntered
+
+    private void jButton_comprobar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_comprobar1MouseExited
+        this.jButton_comprobar1.setBackground(new Color(102,102,102));
+    }//GEN-LAST:event_jButton_comprobar1MouseExited
+
+    private void jButton_resolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolverMouseEntered
+        this.jButton_resolver.setBackground(new Color(236,239,241));
+    }//GEN-LAST:event_jButton_resolverMouseEntered
+
+    private void jButton_resolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolverMouseExited
+        this.jButton_resolver.setBackground(new Color(102,102,102));
+    }//GEN-LAST:event_jButton_resolverMouseExited
+
+    private void jButton_comprobar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_comprobar2MouseEntered
+        this.jButton_comprobar2.setBackground(new Color(236,239,241));
+    }//GEN-LAST:event_jButton_comprobar2MouseEntered
+
+    private void jButton_comprobar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_comprobar2MouseExited
+        this.jButton_comprobar2.setBackground(new Color(102,102,102));
+    }//GEN-LAST:event_jButton_comprobar2MouseExited
+
+    private void jButton_resolver1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolver1MouseEntered
+        this.jButton_resolver1.setBackground(new Color(236,239,241));
+    }//GEN-LAST:event_jButton_resolver1MouseEntered
+
+    private void jButton_resolver1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolver1MouseExited
+        this.jButton_resolver1.setBackground(new Color(102,102,102));
+    }//GEN-LAST:event_jButton_resolver1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -229,16 +479,40 @@ public class AhorcadoUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_Iniciar;
+    private javax.swing.JButton jButton_comprobar1;
+    private javax.swing.JButton jButton_comprobar2;
+    private javax.swing.JButton jButton_resolver;
+    private javax.swing.JButton jButton_resolver1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_Exit;
     private javax.swing.JLabel jLabel_Minimizar;
     private javax.swing.JLabel jLabel_avatar1;
+    private javax.swing.JLabel jLabel_avatar2;
+    private javax.swing.JLabel jLabel_brazoDer;
+    private javax.swing.JLabel jLabel_brazoIzq;
+    private javax.swing.JLabel jLabel_cabeza;
     private javax.swing.JLabel jLabel_fondo;
+    private javax.swing.JLabel jLabel_ganado;
+    private javax.swing.JLabel jLabel_ganado1;
+    private javax.swing.JLabel jLabel_nombreJug1;
+    private javax.swing.JLabel jLabel_nombreJug2;
+    private javax.swing.JLabel jLabel_perdido;
+    private javax.swing.JLabel jLabel_perdido1;
+    private javax.swing.JLabel jLabel_piernaDer;
+    private javax.swing.JLabel jLabel_piernaIzq;
+    private javax.swing.JLabel jLabel_ronda;
+    private javax.swing.JLabel jLabel_ronda1;
+    private javax.swing.JLabel jLabel_soga;
     private javax.swing.JPanel jPanel_Info_jug1;
+    private javax.swing.JPanel jPanel_Info_jug2;
     private javax.swing.JPanel jPanel_Jugador1;
     private javax.swing.JPanel jPanel_Jugador2;
     private javax.swing.JPanel jPanel_fondo;
     private javax.swing.JPanel jPanel_jugadores;
     private javax.swing.JPanel jPanel_menu;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField_letra;
+    private javax.swing.JTextField jTextField_letra1;
     // End of variables declaration//GEN-END:variables
 }
