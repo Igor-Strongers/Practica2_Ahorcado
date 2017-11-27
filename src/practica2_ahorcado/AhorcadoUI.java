@@ -6,16 +6,42 @@
 package practica2_ahorcado;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class AhorcadoUI extends javax.swing.JFrame {
-    private int ronda = 1;
+    private int ronda = 1, rondaMax= 5, numJug= 1;
     private Juego juego = new Juego();
     private Jugadores jug1 = new Jugadores(); 
     private Jugadores jug2 = new Jugadores();
     
+    //Colores de los botones
+    private Color background = new Color(236,239,241);
+    private Color ratonExit = new Color(102,102,102);
+    
+    //Mensaje emergente
+    private final JOptionPane men = new JOptionPane();
+    
     public AhorcadoUI() {
         initComponents();
         //this.jPanel_menu.setBackground(new Color(144,164,174,64));
+        //Imagen del ahorcado
+        this.jLabel_soga.setVisible(false);
+        this.jLabel_cabeza.setVisible(false);
+        this.jLabel_brazoDer.setVisible(false);
+        this.jLabel_brazoIzq.setVisible(false);
+        this.jLabel_piernaDer.setVisible(false);
+        this.jLabel_piernaIzq.setVisible(false);
+        this.jLabel_soga1.setVisible(false);
+        this.jLabel_cabeza1.setVisible(false);
+        this.jLabel_brazoDer1.setVisible(false);
+        this.jLabel_brazoIzq1.setVisible(false);
+        this.jLabel_piernaDer1.setVisible(false);
+        this.jLabel_piernaIzq1.setVisible(false);
+        
+        //Paneles desactivados
+        this.jPanel_jugadores.setVisible(false);
+        this.jPanel_Jugador1.setVisible(false);
+        this.jPanel_Jugador3.setVisible(false);
     }
 
     /**
@@ -27,6 +53,12 @@ public class AhorcadoUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog_nuevaPartida = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField_nombreJug = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField_textoAdiv = new javax.swing.JTextField();
         jPanel_fondo = new javax.swing.JPanel();
         jLabel_Exit = new javax.swing.JLabel();
         jLabel_Minimizar = new javax.swing.JLabel();
@@ -37,20 +69,39 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jLabel_brazoIzq = new javax.swing.JLabel();
         jLabel_piernaDer = new javax.swing.JLabel();
         jLabel_piernaIzq = new javax.swing.JLabel();
-        jPanel_Jugador2 = new javax.swing.JPanel();
+        jTextField_palabra = new javax.swing.JTextField();
+        jLabel_palabra = new javax.swing.JLabel();
+        jLabel_palabra1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_fallos = new javax.swing.JTextArea();
+        jPanel_Jugador3 = new javax.swing.JPanel();
+        jLabel_soga1 = new javax.swing.JLabel();
+        jLabel_cabeza1 = new javax.swing.JLabel();
+        jLabel_brazoDer1 = new javax.swing.JLabel();
+        jLabel_brazoIzq1 = new javax.swing.JLabel();
+        jLabel_piernaDer1 = new javax.swing.JLabel();
+        jLabel_piernaIzq1 = new javax.swing.JLabel();
+        jTextField_palabra1 = new javax.swing.JTextField();
+        jLabel_palabra2 = new javax.swing.JLabel();
+        jLabel_palabra3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea_fallos1 = new javax.swing.JTextArea();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel_menu = new javax.swing.JPanel();
         jButton_Iniciar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel_titulo = new javax.swing.JLabel();
+        jButton_ronda = new javax.swing.JButton();
+        jButton_Finpartida = new javax.swing.JButton();
         jPanel_jugadores = new javax.swing.JPanel();
         jPanel_Info_jug1 = new javax.swing.JPanel();
         jLabel_avatar1 = new javax.swing.JLabel();
         jLabel_nombreJug1 = new javax.swing.JLabel();
-        jLabel_ganado = new javax.swing.JLabel();
         jLabel_perdido = new javax.swing.JLabel();
-        jTextField_letra = new javax.swing.JTextField();
         jLabel_ronda = new javax.swing.JLabel();
         jButton_comprobar1 = new javax.swing.JButton();
         jButton_resolver = new javax.swing.JButton();
+        jTextField_letra2 = new javax.swing.JTextField();
+        jLabel_ganado2 = new javax.swing.JLabel();
         jPanel_Info_jug2 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel_avatar2 = new javax.swing.JLabel();
@@ -62,6 +113,87 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jButton_comprobar2 = new javax.swing.JButton();
         jButton_resolver1 = new javax.swing.JButton();
         jLabel_fondo = new javax.swing.JLabel();
+
+        jDialog_nuevaPartida.setTitle("Nueva Partida");
+        jDialog_nuevaPartida.setBackground(new java.awt.Color(96, 125, 139));
+        jDialog_nuevaPartida.setMaximumSize(new java.awt.Dimension(346, 453));
+        jDialog_nuevaPartida.setMinimumSize(new java.awt.Dimension(346, 453));
+        jDialog_nuevaPartida.setModal(true);
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Nombre del Jugador 1");
+
+        jTextField_nombreJug.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField_nombreJug.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField_nombreJug.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_nombreJug.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_nombreJug.setBorder(null);
+
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Aceptar");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Palabra para adivinar");
+
+        jTextField_textoAdiv.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField_textoAdiv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField_textoAdiv.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_textoAdiv.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_textoAdiv.setBorder(null);
+
+        javax.swing.GroupLayout jDialog_nuevaPartidaLayout = new javax.swing.GroupLayout(jDialog_nuevaPartida.getContentPane());
+        jDialog_nuevaPartida.getContentPane().setLayout(jDialog_nuevaPartidaLayout);
+        jDialog_nuevaPartidaLayout.setHorizontalGroup(
+            jDialog_nuevaPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_nuevaPartidaLayout.createSequentialGroup()
+                .addGap(0, 31, Short.MAX_VALUE)
+                .addGroup(jDialog_nuevaPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(jTextField_nombreJug)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_textoAdiv)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        jDialog_nuevaPartidaLayout.setVerticalGroup(
+            jDialog_nuevaPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_nuevaPartidaLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField_nombreJug, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField_textoAdiv, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1061, 657));
@@ -145,26 +277,110 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jLabel_piernaIzq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pierna izquierda-1.png"))); // NOI18N
         jPanel_Jugador1.add(jLabel_piernaIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 260, -1, -1));
 
+        jTextField_palabra.setEditable(false);
+        jTextField_palabra.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField_palabra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField_palabra.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_palabra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_palabra.setBorder(null);
+        jPanel_Jugador1.add(jTextField_palabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 320, 30));
+
+        jLabel_palabra.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_palabra.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_palabra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_palabra.setText("Letras incorrectas");
+        jPanel_Jugador1.add(jLabel_palabra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+
+        jLabel_palabra1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_palabra1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_palabra1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_palabra1.setText("Palabra ha adivinar");
+        jPanel_Jugador1.add(jLabel_palabra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTextArea_fallos.setEditable(false);
+        jTextArea_fallos.setBackground(new java.awt.Color(0, 0, 0));
+        jTextArea_fallos.setColumns(20);
+        jTextArea_fallos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextArea_fallos.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea_fallos.setLineWrap(true);
+        jTextArea_fallos.setRows(5);
+        jTextArea_fallos.setBorder(null);
+        jScrollPane1.setViewportView(jTextArea_fallos);
+
+        jPanel_Jugador1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
         jPanel_fondo.add(jPanel_Jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 630, 328));
 
-        jPanel_Jugador2.setBackground(new java.awt.Color(236, 239, 241));
-        jPanel_Jugador2.setMaximumSize(new java.awt.Dimension(630, 330));
-        jPanel_Jugador2.setMinimumSize(new java.awt.Dimension(630, 330));
-        jPanel_Jugador2.setPreferredSize(new java.awt.Dimension(632, 328));
-        jPanel_Jugador2.setRequestFocusEnabled(false);
+        jPanel_Jugador3.setBackground(new java.awt.Color(176, 190, 197));
+        jPanel_Jugador3.setMaximumSize(new java.awt.Dimension(630, 330));
+        jPanel_Jugador3.setMinimumSize(new java.awt.Dimension(630, 330));
+        jPanel_Jugador3.setRequestFocusEnabled(false);
+        jPanel_Jugador3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel_Jugador2Layout = new javax.swing.GroupLayout(jPanel_Jugador2);
-        jPanel_Jugador2.setLayout(jPanel_Jugador2Layout);
-        jPanel_Jugador2Layout.setHorizontalGroup(
-            jPanel_Jugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 632, Short.MAX_VALUE)
-        );
-        jPanel_Jugador2Layout.setVerticalGroup(
-            jPanel_Jugador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
+        jLabel_soga1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_soga1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Soga-1.png"))); // NOI18N
+        jPanel_Jugador3.add(jLabel_soga1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
-        jPanel_fondo.add(jPanel_Jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 632, 328));
+        jLabel_cabeza1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_cabeza1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cabeza-1.png"))); // NOI18N
+        jPanel_Jugador3.add(jLabel_cabeza1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 146, -1, -1));
+
+        jLabel_brazoDer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_brazoDer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Brazo derecho-1.png"))); // NOI18N
+        jPanel_Jugador3.add(jLabel_brazoDer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, -1, -1));
+
+        jLabel_brazoIzq1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_brazoIzq1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Brazo izquierdo-1.png"))); // NOI18N
+        jPanel_Jugador3.add(jLabel_brazoIzq1, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 200, -1, -1));
+
+        jLabel_piernaDer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_piernaDer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pierna derecha-1.png"))); // NOI18N
+        jPanel_Jugador3.add(jLabel_piernaDer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
+
+        jLabel_piernaIzq1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_piernaIzq1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pierna izquierda-1.png"))); // NOI18N
+        jPanel_Jugador3.add(jLabel_piernaIzq1, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 260, -1, -1));
+
+        jTextField_palabra1.setEditable(false);
+        jTextField_palabra1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField_palabra1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField_palabra1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_palabra1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_palabra1.setBorder(null);
+        jPanel_Jugador3.add(jTextField_palabra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 320, 30));
+
+        jLabel_palabra2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_palabra2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_palabra2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_palabra2.setText("Letras incorrectas");
+        jPanel_Jugador3.add(jLabel_palabra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+
+        jLabel_palabra3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_palabra3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel_palabra3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_palabra3.setText("Palabra ha adivinar");
+        jPanel_Jugador3.add(jLabel_palabra3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTextArea_fallos1.setEditable(false);
+        jTextArea_fallos1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextArea_fallos1.setColumns(20);
+        jTextArea_fallos1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextArea_fallos1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea_fallos1.setLineWrap(true);
+        jTextArea_fallos1.setRows(5);
+        jTextArea_fallos1.setBorder(null);
+        jScrollPane2.setViewportView(jTextArea_fallos1);
+
+        jPanel_Jugador3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_Jugador3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 630, 20));
+
+        jPanel_fondo.add(jPanel_Jugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 630, 328));
 
         jPanel_menu.setBackground(new java.awt.Color(144, 164, 174));
         jPanel_menu.setMaximumSize(new java.awt.Dimension(200, 657));
@@ -187,32 +403,83 @@ public class AhorcadoUI extends javax.swing.JFrame {
                 jButton_IniciarMouseExited(evt);
             }
         });
+        jButton_Iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_IniciarActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Juego del Ahorcado");
+        jLabel_titulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel_titulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_titulo.setText("Juego del Ahorcado");
+
+        jButton_ronda.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_ronda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton_ronda.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_ronda.setText("<html>Siguiente<br>Ronda</html>");
+        jButton_ronda.setBorder(null);
+        jButton_ronda.setBorderPainted(false);
+        jButton_ronda.setEnabled(false);
+        jButton_ronda.setFocusPainted(false);
+        jButton_ronda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_rondaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_rondaMouseExited(evt);
+            }
+        });
+
+        jButton_Finpartida.setBackground(new java.awt.Color(102, 102, 102));
+        jButton_Finpartida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton_Finpartida.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_Finpartida.setText("<html>Cerrar<br>Partida</html>");
+        jButton_Finpartida.setBorder(null);
+        jButton_Finpartida.setBorderPainted(false);
+        jButton_Finpartida.setEnabled(false);
+        jButton_Finpartida.setFocusPainted(false);
+        jButton_Finpartida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton_FinpartidaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton_FinpartidaMouseExited(evt);
+            }
+        });
+        jButton_Finpartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_FinpartidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_menuLayout = new javax.swing.GroupLayout(jPanel_menu);
         jPanel_menu.setLayout(jPanel_menuLayout);
         jPanel_menuLayout.setHorizontalGroup(
             jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_menuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_Iniciar)
-                .addContainerGap())
-            .addGroup(jPanel_menuLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
+                .addComponent(jLabel_titulo)
                 .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(jPanel_menuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_Finpartida)
+                    .addComponent(jButton_Iniciar)
+                    .addComponent(jButton_ronda, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         jPanel_menuLayout.setVerticalGroup(
             jPanel_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_menuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(77, 77, 77)
+                .addComponent(jLabel_titulo)
+                .addGap(79, 79, 79)
                 .addComponent(jButton_Iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(481, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton_ronda, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton_Finpartida, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(315, Short.MAX_VALUE))
         );
 
         jPanel_fondo.add(jPanel_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 660));
@@ -236,20 +503,10 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jLabel_nombreJug1.setText("Jugador 1");
         jPanel_Info_jug1.add(jLabel_nombreJug1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 160, -1));
 
-        jLabel_ganado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel_ganado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_ganado.setText("Ganado: 0");
-        jPanel_Info_jug1.add(jLabel_ganado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
-
         jLabel_perdido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel_perdido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_perdido.setText("Perdido: 0");
         jPanel_Info_jug1.add(jLabel_perdido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
-
-        jTextField_letra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField_letra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_letra.setBorder(null);
-        jPanel_Info_jug1.add(jTextField_letra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 30));
 
         jLabel_ronda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_ronda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -291,6 +548,18 @@ public class AhorcadoUI extends javax.swing.JFrame {
         });
         jPanel_Info_jug1.add(jButton_resolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 170, 30));
 
+        jTextField_letra2.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField_letra2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField_letra2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_letra2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_letra2.setBorder(null);
+        jPanel_Info_jug1.add(jTextField_letra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 30));
+
+        jLabel_ganado2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_ganado2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_ganado2.setText("Ganado: 0");
+        jPanel_Info_jug1.add(jLabel_ganado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
         jPanel_jugadores.add(jPanel_Info_jug1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel_Info_jug2.setBackground(new java.awt.Color(96, 125, 139));
@@ -319,9 +588,12 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jLabel_perdido1.setText("Perdido: 0");
         jPanel_Info_jug2.add(jLabel_perdido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
+        jTextField_letra1.setBackground(new java.awt.Color(0, 0, 0));
         jTextField_letra1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField_letra1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_letra1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_letra1.setBorder(null);
+        jTextField_letra1.setEnabled(false);
         jPanel_Info_jug2.add(jTextField_letra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 30));
 
         jLabel_ronda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -335,6 +607,7 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jButton_comprobar2.setText("Enviar");
         jButton_comprobar2.setBorder(null);
         jButton_comprobar2.setBorderPainted(false);
+        jButton_comprobar2.setEnabled(false);
         jButton_comprobar2.setFocusPainted(false);
         jButton_comprobar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -353,6 +626,7 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jButton_resolver1.setToolTipText("");
         jButton_resolver1.setBorder(null);
         jButton_resolver1.setBorderPainted(false);
+        jButton_resolver1.setEnabled(false);
         jButton_resolver1.setFocusPainted(false);
         jButton_resolver1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -443,6 +717,89 @@ public class AhorcadoUI extends javax.swing.JFrame {
         this.jButton_resolver1.setBackground(new Color(102,102,102));
     }//GEN-LAST:event_jButton_resolver1MouseExited
 
+    private void jButton_rondaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_rondaMouseEntered
+        this.jButton_ronda.setBackground(background);
+    }//GEN-LAST:event_jButton_rondaMouseEntered
+
+    private void jButton_rondaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_rondaMouseExited
+        this.jButton_ronda.setBackground(this.ratonExit);
+    }//GEN-LAST:event_jButton_rondaMouseExited
+
+    private void jButton_FinpartidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_FinpartidaMouseEntered
+        this.jButton_Finpartida.setBackground(background);
+    }//GEN-LAST:event_jButton_FinpartidaMouseEntered
+
+    private void jButton_FinpartidaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_FinpartidaMouseExited
+        this.jButton_Finpartida.setBackground(this.ratonExit);
+    }//GEN-LAST:event_jButton_FinpartidaMouseExited
+
+    private void jButton_IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_IniciarActionPerformed
+        this.jDialog_nuevaPartida.setLocationRelativeTo(this);
+        this.jDialog_nuevaPartida.setVisible(true);
+    }//GEN-LAST:event_jButton_IniciarActionPerformed
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        this.jButton1.setBackground(background);
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        this.jButton1.setBackground(this.ratonExit);
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String palabra = "";
+        
+        if (this.numJug == 1) {
+            this.jug1.setNombreJugador(this.jTextField_nombreJug.getText());
+            this.jug1.setPalabraAdivinar(this.jTextField_textoAdiv.getText());
+            this.juego.setJugador1(jug1);
+            this.jLabel_nombreJug1.setText(this.jug1.getNombreJugador());
+            palabra = this.jug1.getPalabraAdivinar();
+
+            palabra = ReemplazarPalabra(palabra);
+            this.jTextField_palabra.setText(palabra);
+
+            this.jTextField_nombreJug.setText("");
+            this.jTextField_textoAdiv.setText("");
+            this.jButton_Iniciar.setText("<html>Siguiente<br>Jugador</html>");
+            this.jLabel1.setText("Nombre del Jugador 2");
+            this.jLabel_nombreJug1.setText(this.jug1.getNombreJugador());
+            this.jTextField_palabra.setText(palabra);
+            this.numJug = 2;
+        }
+        else {
+            this.jug2.setNombreJugador(this.jTextField_nombreJug.getText());
+            this.jug2.setPalabraAdivinar(this.jTextField_textoAdiv.getText());
+            this.juego.setJugador1(jug2);
+            palabra = this.jug2.getPalabraAdivinar();
+
+            palabra = ReemplazarPalabra(palabra);
+            this.jTextField_palabra1.setText(palabra);
+            this.jLabel_nombreJug2.setText(this.jug2.getNombreJugador());
+            this.jPanel_jugadores.setVisible(false);
+            this.jPanel_Jugador1.setVisible(false);
+            this.jPanel_Jugador3.setVisible(false);
+            this.jButton1.setText("Siguiente Jugador");
+            this.jLabel_nombreJug2.setText(this.jug2.getNombreJugador());
+            this.jTextField_palabra1.setText(palabra);
+            this.jButton_Iniciar.setText("<html>Nueva<br>Partida</html>");
+            this.jLabel1.setText("Nombre del Jugador 1");
+            this.jButton_Iniciar.setEnabled(false);
+            this.jPanel_jugadores.setVisible(true);
+            this.jPanel_Jugador1.setVisible(true);
+            this.jPanel_Jugador3.setVisible(true);
+            this.numJug = 1;
+            this.jButton_Finpartida.setEnabled(true);
+        }
+        this.jDialog_nuevaPartida.setVisible(false);  
+        this.men.showMessageDialog(null, "Jugador Guardado", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton_FinpartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FinpartidaActionPerformed
+        this.men.showMessageDialog(null, "Cerrar Juego", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }//GEN-LAST:event_jButton_FinpartidaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -479,40 +836,77 @@ public class AhorcadoUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton_Finpartida;
     private javax.swing.JButton jButton_Iniciar;
     private javax.swing.JButton jButton_comprobar1;
     private javax.swing.JButton jButton_comprobar2;
     private javax.swing.JButton jButton_resolver;
     private javax.swing.JButton jButton_resolver1;
+    private javax.swing.JButton jButton_ronda;
+    private javax.swing.JDialog jDialog_nuevaPartida;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_Exit;
     private javax.swing.JLabel jLabel_Minimizar;
     private javax.swing.JLabel jLabel_avatar1;
     private javax.swing.JLabel jLabel_avatar2;
     private javax.swing.JLabel jLabel_brazoDer;
+    private javax.swing.JLabel jLabel_brazoDer1;
     private javax.swing.JLabel jLabel_brazoIzq;
+    private javax.swing.JLabel jLabel_brazoIzq1;
     private javax.swing.JLabel jLabel_cabeza;
+    private javax.swing.JLabel jLabel_cabeza1;
     private javax.swing.JLabel jLabel_fondo;
-    private javax.swing.JLabel jLabel_ganado;
     private javax.swing.JLabel jLabel_ganado1;
+    private javax.swing.JLabel jLabel_ganado2;
     private javax.swing.JLabel jLabel_nombreJug1;
     private javax.swing.JLabel jLabel_nombreJug2;
+    private javax.swing.JLabel jLabel_palabra;
+    private javax.swing.JLabel jLabel_palabra1;
+    private javax.swing.JLabel jLabel_palabra2;
+    private javax.swing.JLabel jLabel_palabra3;
     private javax.swing.JLabel jLabel_perdido;
     private javax.swing.JLabel jLabel_perdido1;
     private javax.swing.JLabel jLabel_piernaDer;
+    private javax.swing.JLabel jLabel_piernaDer1;
     private javax.swing.JLabel jLabel_piernaIzq;
+    private javax.swing.JLabel jLabel_piernaIzq1;
     private javax.swing.JLabel jLabel_ronda;
     private javax.swing.JLabel jLabel_ronda1;
     private javax.swing.JLabel jLabel_soga;
+    private javax.swing.JLabel jLabel_soga1;
+    private javax.swing.JLabel jLabel_titulo;
     private javax.swing.JPanel jPanel_Info_jug1;
     private javax.swing.JPanel jPanel_Info_jug2;
     private javax.swing.JPanel jPanel_Jugador1;
-    private javax.swing.JPanel jPanel_Jugador2;
+    private javax.swing.JPanel jPanel_Jugador3;
     private javax.swing.JPanel jPanel_fondo;
     private javax.swing.JPanel jPanel_jugadores;
     private javax.swing.JPanel jPanel_menu;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField_letra;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextArea jTextArea_fallos;
+    private javax.swing.JTextArea jTextArea_fallos1;
     private javax.swing.JTextField jTextField_letra1;
+    private javax.swing.JTextField jTextField_letra2;
+    private javax.swing.JTextField jTextField_nombreJug;
+    private javax.swing.JTextField jTextField_palabra;
+    private javax.swing.JTextField jTextField_palabra1;
+    private javax.swing.JTextField jTextField_textoAdiv;
     // End of variables declaration//GEN-END:variables
+
+    private String ReemplazarPalabra(String palabra) {
+        char [] letras;
+        
+        letras = palabra.toCharArray();
+        
+        for (int i = 0; i < palabra.length(); i++) {
+            letras[i] = '*';
+        }
+        
+        return String.valueOf(letras);
+    }
 }
