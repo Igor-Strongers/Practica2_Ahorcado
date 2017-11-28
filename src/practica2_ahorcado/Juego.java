@@ -31,12 +31,7 @@ public class Juego {
     public void setJugador2(Jugadores jugador2) {
         this.jugador2 = jugador2;
     }
-    
-    public String TurnoJugador(Jugadores jug1, Jugadores jug2) {
         
-        return "0";
-    }
-    
     //Devuelve true o false si el jugador a adivinado la palabra
     public Boolean AdivinarPalabra(String palabra, Jugadores jugador) {
         Boolean result = null;
@@ -62,12 +57,15 @@ public class Juego {
     //Devuelve un 0 si no coincide la letra a adivinar
     public int LetraDisponible(String palabra, Jugadores jugador) {
         int result = 0;
+        String letra = "";
+        
+        letra = String.valueOf(palabra.charAt(0));
         
         if (this.jugador1.getNombreJugador() == jugador.getNombreJugador()) {
-            result = this.jugador2.getPalabraAdivinar().indexOf(palabra);
+            result = this.jugador2.getPalabraAdivinar().indexOf(letra);
         }
         else {
-            result = this.jugador1.getPalabraAdivinar().indexOf(palabra);
+            result = this.jugador1.getPalabraAdivinar().indexOf(letra);
         }
         return result;
     }
