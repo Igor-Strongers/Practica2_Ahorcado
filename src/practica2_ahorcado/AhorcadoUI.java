@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class AhorcadoUI extends javax.swing.JFrame {
 
-    private int ronda = 1, rondaMax = 2, numJug = 1, fallos = 0, fallomax = 6, fallosjug2 = 0;
+    private int ronda = 1, rondaMax = 5, numJug = 1, fallos = 0, fallomax = 6, fallosjug2 = 0;
     private Juego juego = new Juego();
     private Jugadores jug1 = new Jugadores();
     private Jugadores jug2 = new Jugadores();
@@ -209,7 +209,6 @@ public class AhorcadoUI extends javax.swing.JFrame {
 
         jDialog_nuevaRonda.setTitle("Siguiente Ronda");
         jDialog_nuevaRonda.setBackground(new java.awt.Color(96, 125, 139));
-        jDialog_nuevaRonda.setMaximumSize(new java.awt.Dimension(346, 453));
         jDialog_nuevaRonda.setMinimumSize(new java.awt.Dimension(346, 453));
         jDialog_nuevaRonda.setModal(true);
 
