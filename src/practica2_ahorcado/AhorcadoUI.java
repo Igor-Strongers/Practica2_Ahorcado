@@ -9,7 +9,7 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class AhorcadoUI extends javax.swing.JFrame {
-    private int ronda = 1, rondaMax= 5, numJug= 1;
+    private int ronda = 1, rondaMax= 5, numJug= 1, fallos = 0, fallomax = 6, fallosjug2 = 0;
     private Juego juego = new Juego();
     private Jugadores jug1 = new Jugadores(); 
     private Jugadores jug2 = new Jugadores();
@@ -23,7 +23,9 @@ public class AhorcadoUI extends javax.swing.JFrame {
     
     public AhorcadoUI() {
         initComponents();
-        //this.jPanel_menu.setBackground(new Color(144,164,174,64));
+        //Color paneles
+        //this.jPanel_menu.setBackground(new Color(0,0,0,128));
+        
         //Imagen del ahorcado
         this.jLabel_soga.setVisible(false);
         this.jLabel_cabeza.setVisible(false);
@@ -99,9 +101,11 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jLabel_perdido = new javax.swing.JLabel();
         jLabel_ronda = new javax.swing.JLabel();
         jButton_comprobar1 = new javax.swing.JButton();
-        jButton_resolver = new javax.swing.JButton();
         jTextField_letra2 = new javax.swing.JTextField();
         jLabel_ganado2 = new javax.swing.JLabel();
+        jLabel_resulGan = new javax.swing.JLabel();
+        jLabel_resulPer = new javax.swing.JLabel();
+        jLabel_numRonda = new javax.swing.JLabel();
         jPanel_Info_jug2 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel_avatar2 = new javax.swing.JLabel();
@@ -111,12 +115,13 @@ public class AhorcadoUI extends javax.swing.JFrame {
         jTextField_letra1 = new javax.swing.JTextField();
         jLabel_ronda1 = new javax.swing.JLabel();
         jButton_comprobar2 = new javax.swing.JButton();
-        jButton_resolver1 = new javax.swing.JButton();
+        jLabel_resulGan1 = new javax.swing.JLabel();
+        jLabel_resulPer1 = new javax.swing.JLabel();
+        jLabel_numRonda1 = new javax.swing.JLabel();
         jLabel_fondo = new javax.swing.JLabel();
 
         jDialog_nuevaPartida.setTitle("Nueva Partida");
         jDialog_nuevaPartida.setBackground(new java.awt.Color(96, 125, 139));
-        jDialog_nuevaPartida.setMaximumSize(new java.awt.Dimension(346, 453));
         jDialog_nuevaPartida.setMinimumSize(new java.awt.Dimension(346, 453));
         jDialog_nuevaPartida.setModal(true);
 
@@ -505,21 +510,23 @@ public class AhorcadoUI extends javax.swing.JFrame {
 
         jLabel_perdido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel_perdido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_perdido.setText("Perdido: 0");
-        jPanel_Info_jug1.add(jLabel_perdido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        jLabel_perdido.setText("Perdido:");
+        jPanel_Info_jug1.add(jLabel_perdido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         jLabel_ronda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_ronda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_ronda.setText("Ronda 1");
-        jPanel_Info_jug1.add(jLabel_ronda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jLabel_ronda.setText("Ronda ");
+        jPanel_Info_jug1.add(jLabel_ronda, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jButton_comprobar1.setBackground(new java.awt.Color(102, 102, 102));
         jButton_comprobar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton_comprobar1.setForeground(new java.awt.Color(0, 0, 0));
         jButton_comprobar1.setText("Enviar");
+        jButton_comprobar1.setActionCommand("Enviar_jug1");
         jButton_comprobar1.setBorder(null);
         jButton_comprobar1.setBorderPainted(false);
         jButton_comprobar1.setFocusPainted(false);
+        jButton_comprobar1.setName("enviar_jug1"); // NOI18N
         jButton_comprobar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton_comprobar1MouseEntered(evt);
@@ -528,25 +535,12 @@ public class AhorcadoUI extends javax.swing.JFrame {
                 jButton_comprobar1MouseExited(evt);
             }
         });
-        jPanel_Info_jug1.add(jButton_comprobar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 60, 30));
-
-        jButton_resolver.setBackground(new java.awt.Color(102, 102, 102));
-        jButton_resolver.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton_resolver.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_resolver.setText("Resolver");
-        jButton_resolver.setToolTipText("");
-        jButton_resolver.setBorder(null);
-        jButton_resolver.setBorderPainted(false);
-        jButton_resolver.setFocusPainted(false);
-        jButton_resolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton_resolverMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton_resolverMouseExited(evt);
+        jButton_comprobar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_comprobar1ActionPerformed(evt);
             }
         });
-        jPanel_Info_jug1.add(jButton_resolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 170, 30));
+        jPanel_Info_jug1.add(jButton_comprobar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 60, 30));
 
         jTextField_letra2.setBackground(new java.awt.Color(0, 0, 0));
         jTextField_letra2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -557,8 +551,25 @@ public class AhorcadoUI extends javax.swing.JFrame {
 
         jLabel_ganado2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel_ganado2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_ganado2.setText("Ganado: 0");
+        jLabel_ganado2.setText("Ganado:");
         jPanel_Info_jug1.add(jLabel_ganado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel_resulGan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_resulGan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_resulGan.setText("0");
+        jLabel_resulGan.setPreferredSize(new java.awt.Dimension(34, 20));
+        jPanel_Info_jug1.add(jLabel_resulGan, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+
+        jLabel_resulPer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_resulPer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_resulPer.setText("0");
+        jLabel_resulPer.setPreferredSize(new java.awt.Dimension(34, 20));
+        jPanel_Info_jug1.add(jLabel_resulPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+
+        jLabel_numRonda.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_numRonda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_numRonda.setText("1");
+        jPanel_Info_jug1.add(jLabel_numRonda, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 30, -1));
 
         jPanel_jugadores.add(jPanel_Info_jug1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -580,35 +591,36 @@ public class AhorcadoUI extends javax.swing.JFrame {
 
         jLabel_ganado1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel_ganado1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_ganado1.setText("Ganado: 0");
+        jLabel_ganado1.setText("Ganado:");
         jPanel_Info_jug2.add(jLabel_ganado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jLabel_perdido1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel_perdido1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_perdido1.setText("Perdido: 0");
-        jPanel_Info_jug2.add(jLabel_perdido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        jLabel_perdido1.setText("Perdido:");
+        jPanel_Info_jug2.add(jLabel_perdido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         jTextField_letra1.setBackground(new java.awt.Color(0, 0, 0));
         jTextField_letra1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField_letra1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField_letra1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_letra1.setBorder(null);
-        jTextField_letra1.setEnabled(false);
         jPanel_Info_jug2.add(jTextField_letra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 30));
 
         jLabel_ronda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_ronda1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_ronda1.setText("Ronda 1");
-        jPanel_Info_jug2.add(jLabel_ronda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jLabel_ronda1.setText("Ronda ");
+        jPanel_Info_jug2.add(jLabel_ronda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jButton_comprobar2.setBackground(new java.awt.Color(102, 102, 102));
         jButton_comprobar2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton_comprobar2.setForeground(new java.awt.Color(0, 0, 0));
         jButton_comprobar2.setText("Enviar");
+        jButton_comprobar2.setActionCommand("Enviar_jug2");
         jButton_comprobar2.setBorder(null);
         jButton_comprobar2.setBorderPainted(false);
         jButton_comprobar2.setEnabled(false);
         jButton_comprobar2.setFocusPainted(false);
+        jButton_comprobar2.setName("enviar_jug2"); // NOI18N
         jButton_comprobar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton_comprobar2MouseEntered(evt);
@@ -617,26 +629,29 @@ public class AhorcadoUI extends javax.swing.JFrame {
                 jButton_comprobar2MouseExited(evt);
             }
         });
-        jPanel_Info_jug2.add(jButton_comprobar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 60, 30));
-
-        jButton_resolver1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton_resolver1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton_resolver1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_resolver1.setText("Resolver");
-        jButton_resolver1.setToolTipText("");
-        jButton_resolver1.setBorder(null);
-        jButton_resolver1.setBorderPainted(false);
-        jButton_resolver1.setEnabled(false);
-        jButton_resolver1.setFocusPainted(false);
-        jButton_resolver1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton_resolver1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton_resolver1MouseExited(evt);
+        jButton_comprobar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_comprobar1ActionPerformed(evt);
             }
         });
-        jPanel_Info_jug2.add(jButton_resolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 170, 30));
+        jPanel_Info_jug2.add(jButton_comprobar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 60, 30));
+
+        jLabel_resulGan1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_resulGan1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_resulGan1.setText("0");
+        jLabel_resulGan1.setPreferredSize(new java.awt.Dimension(34, 20));
+        jPanel_Info_jug2.add(jLabel_resulGan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+
+        jLabel_resulPer1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_resulPer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_resulPer1.setText("0");
+        jLabel_resulPer1.setPreferredSize(new java.awt.Dimension(34, 20));
+        jPanel_Info_jug2.add(jLabel_resulPer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+
+        jLabel_numRonda1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_numRonda1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_numRonda1.setText("1");
+        jPanel_Info_jug2.add(jLabel_numRonda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 30, -1));
 
         jPanel_jugadores.add(jPanel_Info_jug2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
@@ -693,14 +708,6 @@ public class AhorcadoUI extends javax.swing.JFrame {
         this.jButton_comprobar1.setBackground(new Color(102,102,102));
     }//GEN-LAST:event_jButton_comprobar1MouseExited
 
-    private void jButton_resolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolverMouseEntered
-        this.jButton_resolver.setBackground(new Color(236,239,241));
-    }//GEN-LAST:event_jButton_resolverMouseEntered
-
-    private void jButton_resolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolverMouseExited
-        this.jButton_resolver.setBackground(new Color(102,102,102));
-    }//GEN-LAST:event_jButton_resolverMouseExited
-
     private void jButton_comprobar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_comprobar2MouseEntered
         this.jButton_comprobar2.setBackground(new Color(236,239,241));
     }//GEN-LAST:event_jButton_comprobar2MouseEntered
@@ -708,14 +715,6 @@ public class AhorcadoUI extends javax.swing.JFrame {
     private void jButton_comprobar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_comprobar2MouseExited
         this.jButton_comprobar2.setBackground(new Color(102,102,102));
     }//GEN-LAST:event_jButton_comprobar2MouseExited
-
-    private void jButton_resolver1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolver1MouseEntered
-        this.jButton_resolver1.setBackground(new Color(236,239,241));
-    }//GEN-LAST:event_jButton_resolver1MouseEntered
-
-    private void jButton_resolver1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_resolver1MouseExited
-        this.jButton_resolver1.setBackground(new Color(102,102,102));
-    }//GEN-LAST:event_jButton_resolver1MouseExited
 
     private void jButton_rondaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_rondaMouseEntered
         this.jButton_ronda.setBackground(background);
@@ -757,31 +756,29 @@ public class AhorcadoUI extends javax.swing.JFrame {
             palabra = this.jug1.getPalabraAdivinar();
 
             palabra = ReemplazarPalabra(palabra);
-            this.jTextField_palabra.setText(palabra);
+            this.jTextField_palabra1.setText(palabra);
 
             this.jTextField_nombreJug.setText("");
             this.jTextField_textoAdiv.setText("");
             this.jButton_Iniciar.setText("<html>Siguiente<br>Jugador</html>");
             this.jLabel1.setText("Nombre del Jugador 2");
             this.jLabel_nombreJug1.setText(this.jug1.getNombreJugador());
-            this.jTextField_palabra.setText(palabra);
             this.numJug = 2;
         }
         else {
             this.jug2.setNombreJugador(this.jTextField_nombreJug.getText());
             this.jug2.setPalabraAdivinar(this.jTextField_textoAdiv.getText());
-            this.juego.setJugador1(jug2);
+            this.juego.setJugador2(jug2);
             palabra = this.jug2.getPalabraAdivinar();
 
             palabra = ReemplazarPalabra(palabra);
-            this.jTextField_palabra1.setText(palabra);
+            this.jTextField_palabra.setText(palabra);
             this.jLabel_nombreJug2.setText(this.jug2.getNombreJugador());
             this.jPanel_jugadores.setVisible(false);
             this.jPanel_Jugador1.setVisible(false);
             this.jPanel_Jugador3.setVisible(false);
             this.jButton1.setText("Siguiente Jugador");
             this.jLabel_nombreJug2.setText(this.jug2.getNombreJugador());
-            this.jTextField_palabra1.setText(palabra);
             this.jButton_Iniciar.setText("<html>Nueva<br>Partida</html>");
             this.jLabel1.setText("Nombre del Jugador 1");
             this.jButton_Iniciar.setEnabled(false);
@@ -799,6 +796,156 @@ public class AhorcadoUI extends javax.swing.JFrame {
         this.men.showMessageDialog(null, "Cerrar Juego", "Aviso", JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }//GEN-LAST:event_jButton_FinpartidaActionPerformed
+
+    private void jButton_comprobar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_comprobar1ActionPerformed
+        String result= "";
+        int ganado, perdido;
+        boolean perdidojug1= false, perdidojug2= false;
+        
+        if (evt.getActionCommand().compareTo("Enviar_jug1") == 0) {
+            if (this.jTextField_letra2.getText().compareTo("") != 0) {
+            
+                if (this.juego.LetraDisponible(this.jTextField_letra2.getText().substring(0), this.jug1) != -1) {
+                    result = this.juego.CambiarLetra(this.jTextField_letra2.getText().substring(0), this.jTextField_palabra.getText(), jug1);
+                    this.jTextField_palabra.setText(result);
+                    
+                    //Comprobar si ha acertado la palabra
+                    if (this.juego.AdivinarPalabra(result, jug1) == true) {
+                        this.men.showMessageDialog(null, "El Jugador 1 ha Ganado", "Ganador", JOptionPane.INFORMATION_MESSAGE);
+                        this.jButton_comprobar1.setEnabled(false);
+                        this.jButton_comprobar2.setEnabled(false);
+                        
+                        
+                        ganado = Integer.parseInt(this.jLabel_resulGan.getText());
+                        ganado++;
+                        this.jLabel_resulGan.setText(ganado+"");
+                        
+                        this.men.showMessageDialog(null, "Inicia siguiente ronda", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                        this.jButton_ronda.setEnabled(true);
+                    }
+                    
+                } else {
+                    this.jTextArea_fallos.setText(this.jTextArea_fallos.getText() + this.jTextField_letra2.getText() + ", ");
+                    this.fallos++;
+                    
+                    if (this.fallos < this.fallomax+1) {
+                        switch (fallos) {
+                            case 1: //Soga
+                                this.jLabel_soga.setVisible(true);
+                                break;
+                            case 2:
+                                this.jLabel_cabeza.setVisible(true);
+                                break;
+                            case 3:
+                                this.jLabel_brazoDer.setVisible(true);
+                                break;
+                            case 4:
+                                this.jLabel_brazoIzq.setVisible(true);
+                                break;
+                            case 5:
+                                this.jLabel_piernaDer.setVisible(true);
+                                break;
+                            case 6:
+                                this.jLabel_piernaIzq.setVisible(true);
+                                perdidojug1 = true;
+                                perdido = Integer.parseInt(this.jLabel_resulPer.getText());
+                                perdido++;
+                                this.jLabel_resulPer.setText(perdido+"");
+                                this.men.showMessageDialog(null, "Has Perdido", "Jugador 1", JOptionPane.INFORMATION_MESSAGE);
+                                this.jButton_comprobar1.setEnabled(false);
+                                this.jButton_comprobar2.setEnabled(false);
+                                this.men.showMessageDialog(null, "Inicia siguiente ronda", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                                this.jButton_ronda.setEnabled(true);
+                                break;
+                        }
+                    }
+                    
+                }
+                
+                if (this.juego.AdivinarPalabra(result, jug1) == false && perdidojug1 == false) {
+                    //Desactivar boton del jugador 1 y activa el del jugador 2
+                    this.jButton_comprobar1.setEnabled(false);
+                    this.jButton_comprobar2.setEnabled(true);
+                    this.men.showMessageDialog(null, "Turno al jugador 2", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else {
+                this.men.showMessageDialog(null, "Debes introducir una letra", "Jugador 1", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else {
+            if (this.jTextField_letra1.getText().compareTo("") != 0) {
+            
+                if (this.juego.LetraDisponible(this.jTextField_letra1.getText().substring(0), this.jug2) != -1) {
+                    result = this.juego.CambiarLetra(this.jTextField_letra1.getText().substring(0), this.jTextField_palabra1.getText(), jug2);
+                    this.jTextField_palabra1.setText(result);
+                    
+                    //Comprobar si ha acertado la palabra
+                    if (this.juego.AdivinarPalabra(result, jug2) == true) {
+                        this.men.showMessageDialog(null, "El Jugador 2 ha Ganado", "Ganador", JOptionPane.INFORMATION_MESSAGE);
+                        this.jButton_comprobar1.setEnabled(false);
+                        this.jButton_comprobar2.setEnabled(false);
+                        
+                        ganado = Integer.parseInt(this.jLabel_resulGan1.getText());
+                        ganado++;
+                        this.jLabel_resulGan1.setText(ganado+"");
+                        
+                        this.men.showMessageDialog(null, "Inicia siguiente ronda", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                        this.jButton_ronda.setEnabled(true);
+                    }
+                    
+                } else {
+                    this.jTextArea_fallos1.setText(this.jTextArea_fallos1.getText() + this.jTextField_letra1.getText() + ", ");
+                    this.fallosjug2++;
+                    
+                    if (this.fallosjug2 < this.fallomax+1) {
+                        switch (this.fallosjug2) {
+                            case 1: //Soga
+                                this.jLabel_soga1.setVisible(true);
+                                break;
+                            case 2:
+                                this.jLabel_cabeza1.setVisible(true);
+                                break;
+                            case 3:
+                                this.jLabel_brazoDer1.setVisible(true);
+                                break;
+                            case 4:
+                                this.jLabel_brazoIzq1.setVisible(true);
+                                break;
+                            case 5:
+                                this.jLabel_piernaDer1.setVisible(true);
+                                break;
+                            case 6:
+                                this.jLabel_piernaIzq1.setVisible(true);
+                                perdido = Integer.parseInt(this.jLabel_resulPer1.getText());
+                                perdido++;
+                                perdidojug2 = true;
+                                this.jLabel_resulPer1.setText(perdido+"");
+                                this.men.showMessageDialog(null, "Has Perdido", "Jugador 2", JOptionPane.INFORMATION_MESSAGE);
+                                this.jButton_comprobar1.setEnabled(false);
+                                this.jButton_comprobar2.setEnabled(false);
+                                this.men.showMessageDialog(null, "Inicia siguiente ronda", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                                this.jButton_ronda.setEnabled(true);
+                                break;
+                        }
+                    }
+                    
+                }
+                if (this.juego.AdivinarPalabra(result, jug2) == false && perdidojug2 == false) {
+                    //Desactivar boton del jugador 1 y activa el del jugador 2
+                    this.jButton_comprobar1.setEnabled(true);
+                    this.jButton_comprobar2.setEnabled(false);
+                    this.men.showMessageDialog(null, "Turno al jugador 1", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }  
+            else {
+                this.men.showMessageDialog(null, "Debes introducir una letra", "Jugador 2", JOptionPane.INFORMATION_MESSAGE);
+            }            
+        }
+        
+        this.jTextField_letra2.setText("");
+        this.jTextField_letra1.setText("");
+    }//GEN-LAST:event_jButton_comprobar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -841,8 +988,6 @@ public class AhorcadoUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Iniciar;
     private javax.swing.JButton jButton_comprobar1;
     private javax.swing.JButton jButton_comprobar2;
-    private javax.swing.JButton jButton_resolver;
-    private javax.swing.JButton jButton_resolver1;
     private javax.swing.JButton jButton_ronda;
     private javax.swing.JDialog jDialog_nuevaPartida;
     private javax.swing.JLabel jLabel1;
@@ -862,6 +1007,8 @@ public class AhorcadoUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_ganado2;
     private javax.swing.JLabel jLabel_nombreJug1;
     private javax.swing.JLabel jLabel_nombreJug2;
+    private javax.swing.JLabel jLabel_numRonda;
+    private javax.swing.JLabel jLabel_numRonda1;
     private javax.swing.JLabel jLabel_palabra;
     private javax.swing.JLabel jLabel_palabra1;
     private javax.swing.JLabel jLabel_palabra2;
@@ -872,6 +1019,10 @@ public class AhorcadoUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_piernaDer1;
     private javax.swing.JLabel jLabel_piernaIzq;
     private javax.swing.JLabel jLabel_piernaIzq1;
+    private javax.swing.JLabel jLabel_resulGan;
+    private javax.swing.JLabel jLabel_resulGan1;
+    private javax.swing.JLabel jLabel_resulPer;
+    private javax.swing.JLabel jLabel_resulPer1;
     private javax.swing.JLabel jLabel_ronda;
     private javax.swing.JLabel jLabel_ronda1;
     private javax.swing.JLabel jLabel_soga;

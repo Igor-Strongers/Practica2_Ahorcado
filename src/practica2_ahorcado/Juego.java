@@ -39,18 +39,66 @@ public class Juego {
     
     //Devuelve true o false si el jugador a adivinado la palabra
     public Boolean AdivinarPalabra(String palabra, Jugadores jugador) {
-        
-        return false;
+        Boolean result = null;
+        if (this.jugador1.getNombreJugador() == jugador.getNombreJugador()) {
+            if(this.jugador2.getPalabraAdivinar().compareTo(palabra) == 0) {
+                result = true;
+            }
+            else {
+                result = false;
+            }
+        }  
+        else {
+            if(this.jugador1.getPalabraAdivinar().compareTo(palabra) == 0) {
+                result = true;
+            }
+            else {
+                result = false;
+            }         
+        }
+        return result;
     }
     
-    //Guarda la palabra a adivinar en el jugador
-    public void PonerPalabra(String palabra, Jugadores jugador) {
+    //Devuelve un 0 si no coincide la letra a adivinar
+    public int LetraDisponible(String palabra, Jugadores jugador) {
+        int result = 0;
         
+        if (this.jugador1.getNombreJugador() == jugador.getNombreJugador()) {
+            result = this.jugador2.getPalabraAdivinar().indexOf(palabra);
+        }
+        else {
+            result = this.jugador1.getPalabraAdivinar().indexOf(palabra);
+        }
+        return result;
     }
     
-    //Devuelve un array con la posicion de las letras
-    public int[] ComprobarLetra(String letra, Jugadores jugador) {
-        
-        return null;
+    //Devuelve un String con la posicion de las letras adivinadas
+    public String CambiarLetra(String letra, String cadAdivinar, Jugadores jugador) {
+        char [] cadena, cambio = null;
+
+
+             
+        if (this.jugador1.getNombreJugador() == jugador.getNombreJugador()) {
+            
+            cadena = this.jugador2.getPalabraAdivinar().toCharArray();
+            cambio = cadAdivinar.toCharArray();
+            
+            for (int i = 0; i < cadena.length; i++) {
+                if (cadena[i] == letra.charAt(0)) {
+                    cambio[i] = cadena[i];
+                }
+            }
+        }
+        else {
+            cadena = this.jugador1.getPalabraAdivinar().toCharArray();
+            cambio = cadAdivinar.toCharArray();
+            
+            for (int i = 0; i < cadena.length; i++) {
+                if (cadena[i] == letra.charAt(0)) {
+                    cambio[i] = cadena[i];
+                }
+            }            
+        }
+        return String.valueOf(cambio);
     }
 }
